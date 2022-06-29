@@ -16,12 +16,11 @@ canJump = false;
 
 //classe para objetos com sprites
 class Sprite {
-    constructor (position, scale, velocity, spriteBlock, animator) {
+    constructor (position, scale, velocity, spriteBlock) {
         this.position = position;
         this.scale = scale;
         this.velocity = velocity;
         this.spriteBlock = spriteBlock;
-        this.animator = animator;
         this.draw();
     }
     draw(){
@@ -44,24 +43,12 @@ class Sprite {
             canJump = true;
         }else this.velocity.y += gravity;
     }
-    animate(){
-        if(this.animator.index < this.animator.animationSprites.length){
-            this.spriteBlock.x = this.animator.animations[index].x;
-            this.spriteBlock.y = this.animator.animations[index].y;
-            this.spriteBlock.width = this.animator.animations[index].width;
-            this.spriteBlock.height = this.animator.animations[index].height;
-            this.animator.index++;
-        }else {
-            this.animator.index = 0;
-        }
-    }
 }
 
 const player = new Sprite(
     {x: 412, y: 163},
     {width: 24, height: 24}, 
-    {x: 0, y: 0}, 
-    {sprite: playerSprites, x: 0, y: 0, width: 24, height: 24},
+    {x: 0, y: 0},
     
 )
 
